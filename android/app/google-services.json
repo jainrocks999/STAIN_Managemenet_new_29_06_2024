@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "254696715042",
+    "project_id": "stainapp-ec3f6",
+    "storage_bucket": "stainapp-ec3f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254696715042:android:b2e4f22c04458e79dbab7b",
+        "android_client_info": {
+          "package_name": "com.stainmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254696715042-9v1j80otna85mid8diffhu4g34i00to2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stainmanagement",
+            "certificate_hash": "d7ab7421c62c169fd6f963c56784898363601133"
+          }
+        },
+        {
+          "client_id": "254696715042-qeabqareouaquenjqa4vc0a4v9770rah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0TatONMWJo-J1GZUI7YCdRzvWT4wqU7k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254696715042-qeabqareouaquenjqa4vc0a4v9770rah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
