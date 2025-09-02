@@ -27,7 +27,7 @@ import CustomButton from '../../../component/Button';
 import StaticBar from '../../../component/StatusBar';
 import DeviceInfo from 'react-native-device-info';
 //import messaging from '@react-native-firebase/messaging';
-import Header from '../../../component/LoginHeader ';
+import Header from '../../../component/LoginHeader';
 import LoginHeader from '../../../component/LoginHeader2';
 import {
   widthPercentageToDP as wp,
@@ -106,6 +106,7 @@ class LoginScreen extends React.Component {
         console.log(p.data);
         const formatRes = await JSON.parse(p.data);
         if (formatRes.status == 'true') {
+          console.log("Venom",formatRes)
           if (formatRes.url == '') {
             await AsyncStorage.setItem(storage.Email, formatRes.email);
             await AsyncStorage.setItem(storage.Name, formatRes.name);

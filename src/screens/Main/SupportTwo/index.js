@@ -5,7 +5,7 @@ import {connect, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import CustomHeader from '../../../component/MainHeader';
 import TitleText from '../../../component/Headertext';
-import HTML from 'react-native-render-html';
+import HTML, { RenderHTML } from 'react-native-render-html';
 import BottomTab from '../../../component/BottomTab';
 import {
   widthPercentageToDP as wp,
@@ -46,10 +46,14 @@ const SupportTwo = () => {
             fontSize={hp('3%')}
           />
           <View style={styles.subHeadingView}>
-            <HTML
+            {/* <HTML
               html={Content}
               imagesMaxWidth={Dimensions.get('window').width}
-            />
+            /> */}
+            <RenderHTML
+  contentWidth={Dimensions.get('window').width}
+  source={{ html: Content || '' }}
+/>
           </View>
         </ScrollView>
       </ImageBackground>

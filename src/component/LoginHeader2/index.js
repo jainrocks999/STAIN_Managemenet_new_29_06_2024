@@ -15,7 +15,7 @@ import {
 import {Menu, MenuItem, MenuDivider} from 'react-native-material-menu';
 import Dialog, {SlideAnimation, DialogContent} from 'react-native-popup-dialog';
 import {connect, useSelector} from 'react-redux';
-import HTML from 'react-native-render-html';
+import HTML, { RenderHTML } from 'react-native-render-html';
 import styles from './style';
 import {
   widthPercentageToDP as wp,
@@ -101,11 +101,7 @@ class LoginHeader2 extends Component {
               justifyContent: 'center',
             }}
             onPress={this.showMenu}>
-            <Menu
-              style={{width: wp('40%')}}
-              ref={this.setMenuRef}
-              button={
-                <View
+               <View
                   activeOpacity={0.6}
                   underlayColor="transparent"
                   style={{
@@ -120,7 +116,13 @@ class LoginHeader2 extends Component {
                     source={require('../../assets/Icons/menu.png')}
                   />
                 </View>
-              }>
+            <Menu
+              style={{width: wp('40%')}}
+              ref={this.setMenuRef}
+              onRequestClose={() => {
+                this.hideMenu()
+              }}
+              >
               <MenuItem style={styles.itemSeperator} onPress={this.showModal}>
                 <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
                   Help
@@ -161,13 +163,19 @@ class LoginHeader2 extends Component {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                <HTML
+                {/* <HTML
                   html={this.state.Content}
                   imagesMaxWidth={Dimensions.get('window').width}
+                /> */}
+                <RenderHTML
+                  contentWidth={Dimensions.get('window').width}
+                  source={{ html: this.state.Content || '' }}
                 />
               </View>
 
-              <TouchableOpacity style={styles.popup} onPress={this.dismiss}>
+              <TouchableOpacity style={styles.popup} onPress={()=>{
+                 this.setState({visible: false});
+              }}>
                 <Text style={styles.ModelBtntext}>Skip</Text>
               </TouchableOpacity>
             </View>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   View,
@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import Axios from 'axios';
 import styles from './style';
-import {connect, useSelector, useDispatch} from 'react-redux';
-import {Menu, MenuItem, MenuDivider} from 'react-native-material-menu';
-import {useNavigation} from '@react-navigation/native';
+import { connect, useSelector, useDispatch } from 'react-redux';
+import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
+import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import storage from '../storage';
 import Toast from 'react-native-simple-toast';
@@ -25,7 +25,7 @@ import {
 
 let arrID = [];
 
-const CustomHeader = ({goBack, goToNotification}) => {
+const CustomHeader = ({ goBack, goToNotification }) => {
   const dispatch = useDispatch();
   const [anim, setAnim] = useState(new Animated.Value(0));
   const [NotificationValue, setNotificationValue] = useState('');
@@ -61,10 +61,10 @@ const CustomHeader = ({goBack, goToNotification}) => {
     if (NotificationValue == notificationFisrtId) {
       return (
         <Animated.View
-          style={{alignSelf: 'center', transform: [{rotate: rotation}]}}>
+          style={{ alignSelf: 'center', transform: [{ rotate: rotation }] }}>
           <Image
             source={require('../../assets/Icons/bell.png')}
-            style={{tintColor: '#fff', height: '100%', width: '100%'}}
+            style={{ tintColor: '#fff', height: '100%', width: '100%' }}
             resizeMode="contain"
           />
         </Animated.View>
@@ -73,7 +73,7 @@ const CustomHeader = ({goBack, goToNotification}) => {
       return (
         <Image
           source={require('../../assets/Icons/bell.png')}
-          style={{tintColor: '#fff', height: '100%', width: '100%'}}
+          style={{ tintColor: '#fff', height: '100%', width: '100%' }}
           resizeMode="contain"
         />
       );
@@ -105,9 +105,9 @@ const CustomHeader = ({goBack, goToNotification}) => {
           },
           style: 'cancel',
         },
-        {text: 'ok', onPress: () => setlog()},
+        { text: 'ok', onPress: () => setlog() },
       ],
-      {cancelable: false},
+      { cancelable: false },
     );
   };
   const setlog = async () => {
@@ -167,7 +167,7 @@ const CustomHeader = ({goBack, goToNotification}) => {
   });
   if (goBack) {
     return (
-      <View style={[styles.header, {justifyContent: 'space-between'}]}>
+      <View style={[styles.header, { justifyContent: 'space-between' }]}>
         <TouchableOpacity style={styles.iconmain} onPress={goBack}>
           <Image
             source={require('../../assets/Icons/arrow1.png')}
@@ -200,44 +200,48 @@ const CustomHeader = ({goBack, goToNotification}) => {
               justifyContent: 'center',
             }}
             onPress={showMenu}>
+
+            <TouchableHighlight
+              activeOpacity={0.6}
+              underlayColor="transparent"
+              style={{
+                width: wp('8%'),
+                height: hp('3%'),
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              onPress={showMenu}>
+              <Image
+                style={{ height: '100%', width: '100%' }}
+                resizeMode="contain"
+                source={require('../../assets/Icons/menu.png')}
+              />
+            </TouchableHighlight>
+
             <Menu
-              style={{width: wp('40%')}}
+              style={{ width: wp('40%') }}
               ref={setMenuRef}
-              button={
-                <TouchableHighlight
-                  activeOpacity={0.6}
-                  underlayColor="transparent"
-                  style={{
-                    width: wp('8%'),
-                    height: hp('3%'),
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                  onPress={showMenu}>
-                  <Image
-                    style={{height: '100%', width: '100%'}}
-                    resizeMode="contain"
-                    source={require('../../assets/Icons/menu.png')}
-                  />
-                </TouchableHighlight>
-              }>
+               onRequestClose={() => {
+                 _menu.hide();
+              }}
+            >
               {/* <MenuItem style={styles.itemSeperator} onPress={Profile}>
                 <Text style={{fontFamily: 'Arial'}}>My Account</Text>
               </MenuItem> */}
 
               <MenuItem style={styles.itemSeperator} onPress={About}>
-                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                <Text style={{ fontFamily: 'Arial', fontSize: hp('1.5%') }}>
                   About The App
                 </Text>
               </MenuItem>
 
               <MenuItem style={styles.itemSeperator} onPress={Support}>
-                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                <Text style={{ fontFamily: 'Arial', fontSize: hp('1.5%') }}>
                   Support
                 </Text>
               </MenuItem>
               <MenuItem style={styles.itemSeperator} onPress={Logout}>
-                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                <Text style={{ fontFamily: 'Arial', fontSize: hp('1.5%') }}>
                   Logout
                 </Text>
               </MenuItem>
@@ -248,7 +252,7 @@ const CustomHeader = ({goBack, goToNotification}) => {
     );
   } else {
     return (
-      <View style={[styles.header, {justifyContent: 'flex-end'}]}>
+      <View style={[styles.header, { justifyContent: 'flex-end' }]}>
         <View style={styles.header1}>
           <TouchableOpacity
             style={{
@@ -273,44 +277,48 @@ const CustomHeader = ({goBack, goToNotification}) => {
               justifyContent: 'center',
             }}
             onPress={showMenu}>
+            <TouchableHighlight
+              activeOpacity={0.6}
+              underlayColor="transparent"
+              style={{
+                width: wp('8%'),
+                height: hp('3%'),
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              onPress={() => {
+                showMenu()
+              }}>
+              <Image
+                style={{ height: '100%', width: '100%', tintColor: "white" }}
+                resizeMode="contain"
+                source={require('../../assets/Icons/menu.png')}
+              />
+            </TouchableHighlight>
             <Menu
-              style={{width: wp('40%')}}
+              style={{ width: wp('40%') }}
               ref={setMenuRef}
-              button={
-                <TouchableHighlight
-                  activeOpacity={0.6}
-                  underlayColor="transparent"
-                  style={{
-                    width: wp('8%'),
-                    height: hp('3%'),
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                  onPress={showMenu}>
-                  <Image
-                    style={{height: '100%', width: '100%'}}
-                    resizeMode="contain"
-                    source={require('../../assets/Icons/menu.png')}
-                  />
-                </TouchableHighlight>
-              }>
-              {/* <MenuItem style={styles.itemSeperator} onPress={Profile}>
-                <Text style={{fontFamily: 'Arial'}}>My Account</Text>
-              </MenuItem> */}
+              onRequestClose={() => {
+                _menu.hide();
+              }}
+
+            >
+
+
 
               <MenuItem style={styles.itemSeperator} onPress={About}>
-                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                <Text style={{ fontFamily: 'Arial', fontSize: hp('1.5%') }}>
                   About The App
                 </Text>
               </MenuItem>
 
               <MenuItem style={styles.itemSeperator} onPress={Support}>
-                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                <Text style={{ fontFamily: 'Arial', fontSize: hp('1.5%') }}>
                   Support
                 </Text>
               </MenuItem>
               <MenuItem style={styles.itemSeperator} onPress={Logout}>
-                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                <Text style={{ fontFamily: 'Arial', fontSize: hp('1.5%') }}>
                   Logout
                 </Text>
               </MenuItem>

@@ -1,7 +1,8 @@
 import React, {Component, useEffect} from 'react';
 
 import RootApp from './src/Navigation/index';
-import {Platform, StatusBar, SafeAreaView, Text, View} from 'react-native';
+// import {Platform, StatusBar, SafeAreaView, Text, View} from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
 import Store from './src/Redux/Store';
 import Axios from 'axios';
@@ -15,11 +16,13 @@ export default class App extends React.Component {
   }
   render() {
     return (
+      <SafeAreaProvider>
       <SafeAreaView style={{flex: 1, backgroundColor: colors.orange}}>
         <Provider store={Store}>
           <RootApp />
         </Provider>
       </SafeAreaView>
+      </SafeAreaProvider>
     );
   }
 }

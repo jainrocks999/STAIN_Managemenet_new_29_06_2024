@@ -127,7 +127,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
   },
   popup: {
-    height: 40,
+    // height: 40,
     marginTop: 20,
     backgroundColor: colors.orange,
     justifyContent: 'center',

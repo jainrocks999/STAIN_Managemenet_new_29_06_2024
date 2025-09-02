@@ -178,9 +178,13 @@ class CustomHeader extends React.Component {
                 alignSelf: 'center',
                 justifyContent: 'center',
               }}>
-              <HTML
+              {/* <HTML
                 html={this.state.Content}
                 imagesMaxWidth={Dimensions.get('window').width}
+              /> */}
+              <RenderHTML
+                contentWidth={Dimensions.get('window').width}
+                source={{ html: this.state.Content || '' }}
               />
             </View>
 
