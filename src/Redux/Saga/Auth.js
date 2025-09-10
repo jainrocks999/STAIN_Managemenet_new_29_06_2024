@@ -223,7 +223,7 @@ function* doStainPost(action) {
 function* doStainDefination(action) {
   const response = yield call(Api.fetchDataByGET, action.url);
   // const formatedResponse = JSON.parse(response);
-  console.log('definition : ', response.data);
+  // console.log('definition : ', response.data);
   if (response.status == 'true') {
     yield put({
       type: 'User_StainDefination_Success',

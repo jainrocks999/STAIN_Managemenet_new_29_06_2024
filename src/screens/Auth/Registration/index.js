@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
-  BackHandler,
   ScrollView,
 } from 'react-native';
 import styles from './style';

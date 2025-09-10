@@ -9,7 +9,7 @@ import {
   View,
   ScrollView,
   Platform,
-  SafeAreaView,
+  // SafeAreaView,
 } from 'react-native';
 import Axios from 'axios';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -176,7 +176,7 @@ class LoginScreen extends React.Component {
       this.state;
     const {SubscribeDetails} = this.props;
     return (
-      <SafeAreaView style={styles.MainView}>
+      <View style={styles.MainView}>
         {/* <Header /> */}
         <LoginHeader />
         <Spinner
@@ -359,7 +359,7 @@ class LoginScreen extends React.Component {
           </ScrollView>
         </ImageBackground>
         <StaticBar />
-      </SafeAreaView>
+      </View> 
     );
   }
 }

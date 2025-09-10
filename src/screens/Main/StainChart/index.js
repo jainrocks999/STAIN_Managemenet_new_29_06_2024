@@ -585,6 +585,7 @@ class StainChart extends React.Component {
               if (element.id == '72') {
                 return (
                   <TouchableOpacity
+                    key={element?.id}
                     style={{alignSelf: 'center'}}
                     onPress={() => {
                       this.setState({
@@ -634,6 +635,7 @@ class StainChart extends React.Component {
               if (element.id == '7') {
                 return (
                   <TouchableOpacity
+                   key={element?.id}
                     style={{alignSelf: 'center'}}
                     onPress={() => {
                       this.setState({

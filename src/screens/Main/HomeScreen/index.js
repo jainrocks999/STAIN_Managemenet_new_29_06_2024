@@ -6,7 +6,7 @@ import {
   Text,
   StatusBar,
   ScrollView,
-  SafeAreaView,
+  // SafeAreaView,
 } from 'react-native';
 import styles from './style';
 import CustomHeader from '../../../component/MainHeader';
@@ -74,7 +74,7 @@ function HomeScreen(props) {
   };
 
   return (
-    <SafeAreaView style={styles.imageBackground}>
+    <View style={styles.imageBackground}>
       <StaticBar />
 
       <CustomHeader
@@ -150,6 +150,7 @@ function HomeScreen(props) {
               if (element.id == '1') {
                 return (
                   <CustomButton
+                   key={element.id} 
                     title={element.name}
                     onPress={() => {
                       navigation.navigate('AboutStains');
@@ -174,6 +175,7 @@ function HomeScreen(props) {
               if (element.id == '6') {
                 return (
                   <CustomButton
+                   key={element.id} 
                     title={element.name}
                     onPress={() => {
                       navigation.navigate('Recommendedsupply');
@@ -206,7 +208,7 @@ function HomeScreen(props) {
           </View>
         </ScrollView>
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 }
 

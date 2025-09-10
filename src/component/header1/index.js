@@ -127,7 +127,8 @@ const CustomHeader = ({props}) => {
       <TouchableOpacity
         style={styles.iconmain}
         onPress={() => {
-          navigation.goBack(null);
+          // navigation.goBack(null);
+          navigation.goBack();
         }}>
         <Image
           source={require('../../assets/Icons/arrow1.png')}

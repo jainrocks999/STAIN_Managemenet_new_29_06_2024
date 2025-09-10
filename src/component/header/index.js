@@ -15,7 +15,8 @@ const CustomHeader = props => {
     <View style={styles.header}>
       <TouchableOpacity
         style={styles.iconmain}
-        onPress={() => { navigation.goBack(null) }}
+        // onPress={() => { navigation.goBack(null) }}
+        onPress={() => { navigation.goBack() }}
       >
         <Image source={require('../../assets/Icons/arrow1.png')}
           style={styles.icon}

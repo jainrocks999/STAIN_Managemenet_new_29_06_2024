@@ -129,7 +129,7 @@ const SupportScreen = ({route}) => {
 
           <FlatList
             data={CaseStudy}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.case_study_id}
             // extraData={() => (
             //   <View>
             //     <Text>hi</Text>

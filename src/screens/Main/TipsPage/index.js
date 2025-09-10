@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {ImageBackground, SafeAreaView, View} from 'react-native';
+import {ImageBackground, 
+  // SafeAreaView,
+   View} from 'react-native';
 import styles from './style';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
@@ -33,7 +35,7 @@ const TipPage = ({route}) => {
   });
 
   return (
-    <SafeAreaView style={styles.imageBackground}>
+    <View style={styles.imageBackground}>
       <CustomHeader
         goBack={() => navigation.goBack()}
         goToNotification={() => navigation.navigate('Notifications')}
@@ -51,7 +53,7 @@ const TipPage = ({route}) => {
       </ImageBackground>
       <StatusBar />
       <BottomTab />
-    </SafeAreaView>
+    </View>
   );
 };
 

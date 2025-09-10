@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Alert,
-  Modal,
   StyleSheet,
   Text,
   Pressable,
@@ -12,9 +11,10 @@ import {
   Linking,
   Dimensions,
 } from 'react-native';
-import {Menu, MenuItem, MenuDivider} from 'react-native-material-menu';
-import Dialog, {SlideAnimation, DialogContent} from 'react-native-popup-dialog';
-import {connect, useSelector} from 'react-redux';
+import Modal from 'react-native-modal';
+import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
+import Dialog, { SlideAnimation, DialogContent } from 'react-native-popup-dialog';
+import { connect, useSelector } from 'react-redux';
 import HTML, { RenderHTML } from 'react-native-render-html';
 import styles from './style';
 import {
@@ -45,7 +45,7 @@ class LoginHeader2 extends Component {
   }
 
   async componentDidMount() {
-    const {StainPagesDetails} = this.props;
+    const { StainPagesDetails } = this.props;
     StainPagesDetails.map(element => {
       if (element.id == '14') {
         // console.log('ggyyyyggg:', JSON.stringify(element));
@@ -73,22 +73,24 @@ class LoginHeader2 extends Component {
 
   setModalVisible = visible => {
     //console.log('helloModal');
-    this.setState({modalVisible: visible});
+    this.setState({ modalVisible: visible });
   };
 
   dolink = async () => {
     await Linking.openURL('mailto:apps@surphaces.com');
   };
   dismiss = () => {
-    this.setState({visible: false});
+    this.setState({ visible: false });
   };
   showModal = () => {
-    this.setState({visible: true});
-    this._menu.hide();
+    this.hideMenu()
+    setTimeout(() => {
+      this.setState({ visible: true });
+    }, 500)
   };
 
   render() {
-    const {modalVisible} = this.state;
+    const { modalVisible } = this.state;
     return (
       <View style={styles.header}>
         <View style={styles.header1}>
@@ -101,30 +103,30 @@ class LoginHeader2 extends Component {
               justifyContent: 'center',
             }}
             onPress={this.showMenu}>
-               <View
-                  activeOpacity={0.6}
-                  underlayColor="transparent"
-                  style={{
-                    height: hp('4%'),
-                    width: wp('6%'),
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                  <Image
-                    style={{height: '100%', width: '100%'}}
-                    resizeMode="contain"
-                    source={require('../../assets/Icons/menu.png')}
-                  />
-                </View>
+            <View
+              activeOpacity={0.6}
+              underlayColor="transparent"
+              style={{
+                height: hp('4%'),
+                width: wp('6%'),
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Image
+                style={{ height: '100%', width: '100%' }}
+                resizeMode="contain"
+                source={require('../../assets/Icons/menu.png')}
+              />
+            </View>
             <Menu
-              style={{width: wp('40%')}}
+              style={{ width: wp('40%') }}
               ref={this.setMenuRef}
               onRequestClose={() => {
                 this.hideMenu()
               }}
-              >
+            >
               <MenuItem style={styles.itemSeperator} onPress={this.showModal}>
-                <Text style={{fontFamily: 'Arial', fontSize: hp('1.5%')}}>
+                <Text style={{ fontFamily: 'Arial', fontSize: hp('1.5%') }}>
                   Help
                 </Text>
                 {/* <Pressable
@@ -137,11 +139,12 @@ class LoginHeader2 extends Component {
           </TouchableOpacity>
         </View>
 
-        <Dialog
+        {/* <Dialog
           visible={this.state.visible}
           onTouchOutside={() => {
             this.setState({visible: false});
-          }}>
+          }}
+          >
           <DialogContent>
             <View style={styles.modal}>
               <View style={{width: '100%'}}>
@@ -163,10 +166,6 @@ class LoginHeader2 extends Component {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                {/* <HTML
-                  html={this.state.Content}
-                  imagesMaxWidth={Dimensions.get('window').width}
-                /> */}
                 <RenderHTML
                   contentWidth={Dimensions.get('window').width}
                   source={{ html: this.state.Content || '' }}
@@ -180,7 +179,48 @@ class LoginHeader2 extends Component {
               </TouchableOpacity>
             </View>
           </DialogContent>
-        </Dialog>
+        </Dialog> */}
+        <Modal
+          isVisible={this.state.visible}
+          onBackdropPress={() => this.setState({ visible: false })}
+          onBackButtonPress={() => this.setState({ visible: false })}
+          animationIn="slideInUp"
+          animationOut="slideOutDown"
+          backdropTransitionOutTiming={0}>
+          <View style={styles.modal}>
+            <View style={{ width: '100%' }}>
+              <Text
+                style={{
+                  color: 'red',
+                  fontSize: hp('2.5%'),
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                }}>
+                {this.state.Button.toUpperCase()}
+              </Text>
+            </View>
+
+            <View
+              style={{
+                width: '90%',
+                marginTop: hp('1%'),
+                alignSelf: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <RenderHTML
+                contentWidth={Dimensions.get('window').width}
+                source={{ html: this.state.Content || '' }}
+              />
+            </View>
+
+            <TouchableOpacity
+              style={styles.popup}
+              onPress={() => this.setState({ visible: false })}>
+              <Text style={styles.ModelBtntext}>Skip</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </View>
     );
   }
